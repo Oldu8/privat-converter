@@ -2,34 +2,9 @@ import "./App.scss";
 import Header from "./Header/Header";
 import { useEffect, useState } from "react";
 import { financialRound } from "./services/functions";
-import Main from "./Main/Main";
-
-export enum favoriteCurrency {
-  USD = "USD",
-  UAH = "UAH",
-  EUR = "EUR",
-  BTC = "BTC",
-}
-
-export interface IMainProps {
-  options: string[];
-  fromCurrency: string;
-  toCurrency: string;
-  setFromCurrency: React.Dispatch<React.SetStateAction<string>>;
-  setToCurrency: React.Dispatch<React.SetStateAction<string>>;
-  toAmount: number;
-  fromAmount: number;
-  onChangeFromAmount: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangeToAmount: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-export interface ICurrencyItemProps {
-  options: string[];
-  defaultCurrency: string;
-  onChangeCurrency: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  amount: number;
-  onChangeAmount: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { favoriteCurrency } from "./enums";
+import SwapWindow from "./SwapWindow/SwapWindow";
+import TableWindow from "./TableWindow/TableWindow";
 
 const base_url = "https://api.exchangerate.host/convert";
 
@@ -38,9 +13,7 @@ function App() {
   const [toCurrency, setToCurrency] = useState<string>("USD");
   const [rates, setRates] = useState<number>(1);
   const [amountPrimary, setAmountPrimary] = useState<number>(1);
-  const [amountSecondary, setAmountSecondary] = useState<number | boolean>(
-    true
-  );
+  const [amountSecondary, setAmountSecondary] = useState<boolean>(true);
 
   let toAmount, fromAmount;
   if (amountSecondary) {
@@ -70,17 +43,20 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Main
-        options={Object.values(favoriteCurrency)}
-        fromCurrency={fromCurrency}
-        toCurrency={toCurrency}
-        setFromCurrency={setFromCurrency}
-        setToCurrency={setToCurrency}
-        toAmount={toAmount}
-        fromAmount={fromAmount}
-        onChangeFromAmount={onChangeFromAmount}
-        onChangeToAmount={onChangeToAmount}
-      />
+      <section className="wrapper">
+        <TableWindow />
+        <SwapWindow
+          options={Object.values(favoriteCurrency)}
+          fromCurrency={fromCurrency}
+          toCurrency={toCurrency}
+          setFromCurrency={setFromCurrency}
+          setToCurrency={setToCurrency}
+          toAmount={toAmount}
+          fromAmount={fromAmount}
+          onChangeFromAmount={onChangeFromAmount}
+          onChangeToAmount={onChangeToAmount}
+        />
+      </section>
     </div>
   );
 }
