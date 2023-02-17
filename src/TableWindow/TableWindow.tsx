@@ -6,6 +6,7 @@ import {
   TableBody,
 } from "@mui/material";
 import { StyledTableCell } from "../services/funcForMUITable";
+import { TableFunc } from "../types";
 import TableItem from "./TableItem/TableItem";
 // import { favoriteCurrency } from "../enums";
 
@@ -17,7 +18,7 @@ const mockData = [
   { name: "BTC/UAH", buyPrice: 300, sellPrice: 333 },
 ];
 
-export default function TableWindow() {
+const TableWindow: TableFunc = ({ data }) => {
   return (
     <div className="tableWrapper">
       <TableContainer>
@@ -30,7 +31,7 @@ export default function TableWindow() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {mockData.map((item) => (
+            {data.map((item) => (
               <TableItem data={item} key={item.name} />
             ))}
           </TableBody>
@@ -38,4 +39,6 @@ export default function TableWindow() {
       </TableContainer>
     </div>
   );
-}
+};
+
+export default TableWindow;

@@ -20,7 +20,20 @@ export interface ICurrencyItemProps {
   onChangeAmount: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface ITableItem {
+// export interface ITableItem {
+//   name: string;
+//   buyPrice: number;
+//   sellPrice: number;
+// }
+
+// export interface IRawCurrency {
+//   ccy: string;
+//   base_ccy: string;
+//   buy: string;
+//   sale: string;
+// }
+
+export interface ICurrency {
   name: string;
   buyPrice: number;
   sellPrice: number;

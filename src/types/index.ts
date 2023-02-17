@@ -1,3 +1,4 @@
-import { ITableItem } from "../interfaces";
+import { ICurrency } from "../interfaces";
 
-export type ItemListFunc = (props: { data: ITableItem }) => JSX.Element;
+export type ItemListFunc = (props: { data: ICurrency }) => JSX.Element;
+export type TableFunc = (props: { data: ICurrency[] }) => JSX.Element;
