@@ -1,3 +1,5 @@
+import { SelectChangeEvent } from "@mui/material";
+
 export interface IMainProps {
   options: string[];
   fromCurrency: string;
@@ -13,7 +15,7 @@ export interface IMainProps {
 export interface ICurrencyItemProps {
   options: string[];
   defaultCurrency: string;
-  onChangeCurrency: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChangeCurrency: (e: SelectChangeEvent<string>) => void;
   amount: number;
   onChangeAmount: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

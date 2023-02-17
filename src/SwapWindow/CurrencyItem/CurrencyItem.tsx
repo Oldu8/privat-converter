@@ -1,3 +1,4 @@
+import { InputLabel, MenuItem, OutlinedInput, Select } from "@mui/material";
 import { ICurrencyItemProps } from "../../interfaces/index";
 
 function CurrencyItem({
@@ -9,24 +10,29 @@ function CurrencyItem({
 }: ICurrencyItemProps) {
   return (
     <div className="item">
-      <select
-        className="select"
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
         value={defaultCurrency}
         onChange={onChangeCurrency}
+        className="swapSelect"
       >
         {options.map((i: string) => {
           return (
-            <option key={i} value={i} className="option">
+            <MenuItem key={i} value={i} className="option">
               {i}
-            </option>
+            </MenuItem>
           );
         })}
-      </select>
-      <input
+      </Select>
+      <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
+      <OutlinedInput
+        id="outlined-adornment-amount"
         type="number"
-        className="input"
         value={amount}
         onChange={onChangeAmount}
+        // startAdornment={<InputAdornment position="start">$</InputAdornment>}
+        label="Amount"
       />
     </div>
   );

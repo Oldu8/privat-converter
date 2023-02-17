@@ -12,7 +12,7 @@ function App() {
   const [fromCurrency, setFromCurrency] = useState<string>("UAH");
   const [toCurrency, setToCurrency] = useState<string>("USD");
   const [rates, setRates] = useState<number>(1);
-  const [amountPrimary, setAmountPrimary] = useState<number>(1);
+  const [amountPrimary, setAmountPrimary] = useState<number>(100);
   const [amountSecondary, setAmountSecondary] = useState<boolean>(true);
 
   let toAmount, fromAmount;
